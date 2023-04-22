@@ -6,11 +6,12 @@
 	import gzip from "gzip-js";
 
 	let files: FileList;
+	$: file = files && files[0];
 
 	const download = (data: Uint8Array, filename: string) => {
-		const file = new Blob([data]);
+		const blob = new Blob([data]);
 		const a = document.createElement("a");
-		const url = URL.createObjectURL(file);
+		const url = URL.createObjectURL(blob);
 
 		a.href = url;
 		a.download = filename;
@@ -23,12 +24,12 @@
 	};
 
 	const handleSubmit = async () => {
-		if (!files || !files[0]) {
+		if (!file) {
 			console.log("No file was selected");
 			return;
 		}
 
-		const buffer = await files[0].arrayBuffer();
+		const buffer = await file.arrayBuffer();
 		const midi = splitMidi(new Midi(buffer));
 		const nbtData = generateNBT(midi);
 		const nbtBuffer = await NBT.write(nbtData);
