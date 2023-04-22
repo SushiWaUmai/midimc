@@ -38,18 +38,17 @@ export class Region {
 		return this.length.valueOf();
 	}
 
-
 	toNBT(): NBT.NBTData {
 		const root: NBT.CompoundTag = {
-			"Version": new NBT.Int(2),
-			"DataVersion": new NBT.Int(2975),
-			"Width": this.width,
-			"Height": this.height,
-			"Length": this.length,
-			"BlockData": this.blockData,
-			"PaletteMax": new NBT.Int(Block.maxTags),
-			"Palette": Block.palette,
-		}
+			Version: new NBT.Int(2),
+			DataVersion: new NBT.Int(2975),
+			Width: this.width,
+			Height: this.height,
+			Length: this.length,
+			BlockData: this.blockData,
+			PaletteMax: new NBT.Int(Block.maxTags),
+			Palette: Block.palette
+		};
 
 		const data = new NBT.NBTData(root, { name: "Schematic" });
 		return data;

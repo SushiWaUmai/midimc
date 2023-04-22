@@ -3,23 +3,23 @@ import { Region } from "./region";
 import type { Note } from "@tonejs/midi/dist/Note";
 import type { Midi } from "@tonejs/midi";
 
-const AIR = Block.create('minecraft:air');
-const REPEATER = Block.create('minecraft:repeater');
-const WHITE_CONCRETE = Block.create('minecraft:white_concrete');
-const REDSTONE_WIRE = Block.create('minecraft:redstone_wire');
-const OBSERVER_DOWN = Block.create('minecraft:observer[facing=down]');
-const POWERED_RAIL = Block.create('minecraft:powered_rail[shape=east_west]');
-const REDSTONE_BLOCK = Block.create('minecraft:redstone_block');
-const REDSTONE_LAMP = Block.create('minecraft:redstone_lamp');
-const STICKY_PISTON = Block.create('minecraft:sticky_piston[facing=south]');
-const LEVER = Block.create('minecraft:lever[face=floor]');
+const AIR = Block.create("minecraft:air");
+const REPEATER = Block.create("minecraft:repeater");
+const WHITE_CONCRETE = Block.create("minecraft:white_concrete");
+const REDSTONE_WIRE = Block.create("minecraft:redstone_wire");
+const OBSERVER_DOWN = Block.create("minecraft:observer[facing=down]");
+const POWERED_RAIL = Block.create("minecraft:powered_rail[shape=east_west]");
+const REDSTONE_BLOCK = Block.create("minecraft:redstone_block");
+const REDSTONE_LAMP = Block.create("minecraft:redstone_lamp");
+const STICKY_PISTON = Block.create("minecraft:sticky_piston[facing=south]");
+const LEVER = Block.create("minecraft:lever[face=floor]");
 
 const INSTRUMENT_BLOCKS = [
 	Block.create("minecraft:oak_planks"),
 	Block.create("minecraft:white_wool"),
 	Block.create("minecraft:dirt"),
 	Block.create("minecraft:clay"),
-	Block.create("minecraft:gold_block"),
+	Block.create("minecraft:gold_block")
 ];
 
 const createPlatforms = (reg: Region) => {
@@ -29,7 +29,7 @@ const createPlatforms = (reg: Region) => {
 			reg.setBlock(x, 6, z, WHITE_CONCRETE);
 		}
 	}
-}
+};
 
 const createRepeater = (reg: Region, width: number, start = 0) => {
 	const first = (start + 5) % 2;
@@ -44,7 +44,7 @@ const createRepeater = (reg: Region, width: number, start = 0) => {
 			}
 		}
 	}
-}
+};
 
 const createFirstLayer = (reg: Region, width: number, start = 0) => {
 	const first = (start + 5) % 2;
@@ -55,7 +55,7 @@ const createFirstLayer = (reg: Region, width: number, start = 0) => {
 			reg.setBlock(width - 1, 2, z, OBSERVER_DOWN);
 		}
 	}
-}
+};
 
 const createTopLayer = (reg: Region, start = 0) => {
 	for (let z = start + 5; z < reg.Length; z++) {
@@ -66,7 +66,6 @@ const createTopLayer = (reg: Region, start = 0) => {
 		}
 	}
 };
-
 
 const createRedstoneLamps = (reg: Region, width: number, start = 0) => {
 	for (let z = start + 5; z < reg.Length; z++) {
@@ -82,34 +81,31 @@ const createLayers = (reg: Region, width: number, start = 0) => {
 	createRedstoneLamps(reg, width, start);
 };
 
-
 const createStart = (reg: Region, width: number, start = 0) => {
 	reg.setBlock(width, 7, start, LEVER);
 
 	createStaircase(reg, width, start);
 	createNonPistonConnection(reg, width, start);
 	createPistonConnection(reg, width, start);
-}
-
+};
 
 const createStaircase = (reg: Region, width: number, start = 0) => {
 	// first block
-	reg.setBlock(width, 5, start + 0, REDSTONE_WIRE)
-	reg.setBlock(width, 4, start + 0, WHITE_CONCRETE)
+	reg.setBlock(width, 5, start + 0, REDSTONE_WIRE);
+	reg.setBlock(width, 4, start + 0, WHITE_CONCRETE);
 
 	// second block
-	reg.setBlock(width, 4, start + 1, REDSTONE_WIRE)
-	reg.setBlock(width, 3, start + 1, WHITE_CONCRETE)
+	reg.setBlock(width, 4, start + 1, REDSTONE_WIRE);
+	reg.setBlock(width, 3, start + 1, WHITE_CONCRETE);
 
 	// third block
-	reg.setBlock(width + 1, 3, start + 1, REDSTONE_WIRE)
-	reg.setBlock(width + 1, 2, start + 1, WHITE_CONCRETE)
+	reg.setBlock(width + 1, 3, start + 1, REDSTONE_WIRE);
+	reg.setBlock(width + 1, 2, start + 1, WHITE_CONCRETE);
 
 	// forth block
-	reg.setBlock(width + 1, 2, start + 0, REDSTONE_WIRE)
-	reg.setBlock(width + 1, 1, start + 0, WHITE_CONCRETE)
-}
-
+	reg.setBlock(width + 1, 2, start + 0, REDSTONE_WIRE);
+	reg.setBlock(width + 1, 1, start + 0, WHITE_CONCRETE);
+};
 
 const createNonPistonConnection = (reg: Region, width: number, start = 0) => {
 	// One game tick repeater
@@ -119,7 +115,7 @@ const createNonPistonConnection = (reg: Region, width: number, start = 0) => {
 	reg.setBlock(width + 1, 1, start + 2, REDSTONE_WIRE);
 	reg.setBlock(width + 1, 1, start + 3, REDSTONE_WIRE);
 	reg.setBlock(width + 1, 1, start + 4, REDSTONE_WIRE);
-}
+};
 
 const createPistonConnection = (reg: Region, width: number, start = 0) => {
 	// Connection to the right side
@@ -143,13 +139,19 @@ const createPistonConnection = (reg: Region, width: number, start = 0) => {
 	reg.setBlock(width - 1, 1, start + 3, WHITE_CONCRETE);
 	reg.setBlock(width - 1, 2, start + 3, REDSTONE_WIRE);
 	reg.setBlock(width - 1, 1, start + 4, REDSTONE_WIRE);
-}
+};
 
 const timeToCoord = (time: number) => {
 	return Math.round(time * 30);
-}
+};
 
-const createNoteBlock = (reg: Region, width: number, note: Note, instrumentBlock: Block, start: number) => {
+const createNoteBlock = (
+	reg: Region,
+	width: number,
+	note: Note,
+	instrumentBlock: Block,
+	start: number
+) => {
 	let vel_pos = width - Math.round((note.velocity * width) / 128);
 	const coord = timeToCoord(note.time) + start + 5;
 	const note_block = Block.create(`minecraft:note_block[note=${note.midi - 54}]`);
@@ -168,23 +170,23 @@ const createNoteBlock = (reg: Region, width: number, note: Note, instrumentBlock
 		}
 		vel_pos += vel_add;
 	}
-}
+};
 
 const createNoteBlocks = (reg: Region, width: number, audio: Midi, start = 0) => {
 	audio.tracks.forEach((track, i) => {
-		track.notes.forEach(note => {
+		track.notes.forEach((note) => {
 			createNoteBlock(reg, width, note, INSTRUMENT_BLOCKS[i], start);
-		})
-	})
-}
+		});
+	});
+};
 
 export const generateNBT = (audio: Midi, width = 7, start = 5) => {
-	const reg = new Region(width * 2 + 1, 8, timeToCoord(audio.duration + 1))
+	const reg = new Region(width * 2 + 1, 8, timeToCoord(audio.duration + 1));
 
-	createLayers(reg, width, start)
-	createStart(reg, width, start)
-	createNoteBlocks(reg, width, audio, start)
+	createLayers(reg, width, start);
+	createStart(reg, width, start);
+	createNoteBlocks(reg, width, audio, start);
 
-	const nbtData = reg.toNBT()
+	const nbtData = reg.toNBT();
 	return nbtData;
-}
+};

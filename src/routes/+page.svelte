@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { onMount } from "svelte";
 	import { generateNBT } from "../utils/getNbt";
 	import { Midi } from "@tonejs/midi";
 	import { splitMidi } from "../utils/getMidi";
 	import * as NBT from "nbtify";
+	import gzip from "gzip-js";
 
 	let files: FileList;
 
 	const download = (data: Uint8Array, filename: string) => {
-		var file = new Blob([data]);
-		// Others
-		var a = document.createElement("a"),
-			url = URL.createObjectURL(file);
+		const file = new Blob([data]);
+		const a = document.createElement("a");
+		const url = URL.createObjectURL(file);
+
 		a.href = url;
 		a.download = filename;
 		document.body.appendChild(a);
@@ -32,12 +32,8 @@
 		const midi = splitMidi(new Midi(buffer));
 		const nbtData = generateNBT(midi);
 		const nbtBuffer = await NBT.write(nbtData);
-		download(nbtBuffer, "result.schem");
+		download(new Uint8Array(gzip.zip(nbtBuffer)), "result.schem");
 	};
-
-	onMount(async () => {
-		console.log();
-	});
 </script>
 
 <h1>Convert Midi files to Minecraft Schematic files</h1>

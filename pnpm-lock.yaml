@@ -13,6 +13,9 @@ devDependencies:
   '@tonejs/midi':
     specifier: ^2.0.28
     version: 2.0.28
+  '@types/gzip-js':
+    specifier: ^0.3.3
+    version: 0.3.3
   '@typescript-eslint/eslint-plugin':
     specifier: ^5.45.0
     version: 5.45.0(@typescript-eslint/parser@5.45.0)(eslint@8.28.0)(typescript@5.0.2)
@@ -28,6 +31,9 @@ devDependencies:
   eslint-plugin-svelte3:
     specifier: ^4.0.0
     version: 4.0.0(eslint@8.28.0)(svelte@3.54.0)
+  gzip-js:
+    specifier: ^0.3.2
+    version: 0.3.2
   nbtify:
     specifier: ^1.20.1
     version: 1.20.1
@@ -410,8 +416,18 @@ packages:
     resolution: {integrity: sha512-COUnqfB2+ckwXXSFInsFdOAWQzCCx+a5hq2ruyj+Vjund94RJQd4LG2u9hnvJrTgunKAaax7ancBYlDrNYxA0g==}
     dev: true
 
+  /@types/gzip-js@0.3.3:
+    resolution: {integrity: sha512-Bp4dv9hfpD49sjn59+8VPMDm4O5Lx1qSLKn4GqV9ENbvoKrCV7GntIr7e85cFjtRWRPTXkIxWTCk4DKMXostMg==}
+    dependencies:
+      '@types/node': 18.15.13
+    dev: true
+
   /@types/json-schema@7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
+    dev: true
+
+  /@types/node@18.15.13:
+    resolution: {integrity: sha512-N+0kuo9KgrUQ1Sn/ifDXsvg0TTleP7rIy4zOBGECxAljqvqfqpTfzx0Q1NUedOixRMBfe2Whhb056a42cWs26Q==}
     dev: true
 
   /@types/pug@2.0.6:
@@ -689,6 +705,12 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
+  /crc32@0.2.2:
+    resolution: {integrity: sha512-PFZEGbDUeoNbL2GHIEpJRQGheXReDody/9axKTxhXtQqIL443wnNigtVZO9iuCIMPApKZRv7k2xr8euXHqNxQQ==}
+    engines: {node: '>= 0.4.0'}
+    hasBin: true
+    dev: true
+
   /cross-spawn@7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
     engines: {node: '>= 8'}
@@ -717,6 +739,12 @@ packages:
   /deepmerge@4.3.1:
     resolution: {integrity: sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /deflate-js@0.2.3:
+    resolution: {integrity: sha512-r5KgHJ/yTiWQs23nVeQz5dSL/kmW0MBszsssNyEqDCjjFDj4XG/c6QUN/I0JtY3ZHwwcaNBtGE8s+oV33acTfQ==}
+    engines: {node: '>= 0.4.0'}
+    hasBin: true
     dev: true
 
   /detect-indent@6.1.0:
@@ -1063,6 +1091,15 @@ packages:
 
   /grapheme-splitter@1.0.4:
     resolution: {integrity: sha512-bzh50DW9kTPM00T8y4o8vQg89Di9oLJVLW/KaOGIXJWP/iqCN6WKYkbNOF04vFLJhwcpYUh9ydh/+5vpOqV4YQ==}
+    dev: true
+
+  /gzip-js@0.3.2:
+    resolution: {integrity: sha512-BFTiwtEN12koJsnhVo77SzW+u6VANzhaK0HEtdwFwgFzFOq1WQJ8eSPEyGAueUfs1C/WqdgtuYnUwCRuRm1A5Q==}
+    engines: {node: '>= 0.4.0'}
+    hasBin: true
+    dependencies:
+      crc32: 0.2.2
+      deflate-js: 0.2.3
     dev: true
 
   /has-flag@4.0.0:
