@@ -1,1 +1,1 @@
-# Midi to Minecraft Noteblocks
+# MidiMC
