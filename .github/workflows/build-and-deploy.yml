@@ -16,7 +16,11 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        env:
+          BASE_PATH: '/midi-to-noteblock-site'
+        run: |
+          npm run build
+          touch build/.nojekyll
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.2
