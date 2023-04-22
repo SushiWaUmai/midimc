@@ -17,7 +17,7 @@ jobs:
 
       - name: Build
         env:
-          BASE_PATH: '/midi-to-noteblock-site'
+          BASE_PATH: /${{ github.event.repository.name }}
         run: |
           npm run build
           touch build/.nojekyll
