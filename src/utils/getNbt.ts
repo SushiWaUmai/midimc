@@ -142,7 +142,7 @@ const createPistonConnection = (reg: Region, width: number, start = 0) => {
 };
 
 const timeToCoord = (time: number) => {
-	return Math.round(time * 30);
+	return Math.round(time * 5);
 };
 
 const createNoteBlock = (
