@@ -23,7 +23,7 @@ export class Block {
 		Block.maxTags += 1;
 		Block.blocks.push(block);
 
-		Block.palette[this.name] = new NBT.Int(block.index);
+		Block.palette[block.name] = new NBT.Int(block.index);
 
 		return block;
 	}
