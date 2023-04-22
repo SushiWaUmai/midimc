@@ -152,7 +152,7 @@ const createNoteBlock = (
 	instrumentBlock: Block,
 	start: number
 ) => {
-	let vel_pos = width - Math.round((note.velocity * width) / 128);
+	let vel_pos = width - Math.round(note.velocity * width);
 	const coord = timeToCoord(note.time) + start + 5;
 	const note_block = Block.create(`minecraft:note_block[note=${note.midi - 54}]`);
 
