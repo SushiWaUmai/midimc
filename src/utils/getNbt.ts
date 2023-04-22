@@ -3,23 +3,23 @@ import { Region } from "./region";
 import type { Note } from "@tonejs/midi/dist/Note";
 import type { Midi } from "@tonejs/midi";
 
-const AIR = new Block('minecraft:air');
-const REPEATER = new Block('minecraft:repeater');
-const WHITE_CONCRETE = new Block('minecraft:white_concrete');
-const REDSTONE_WIRE = new Block('minecraft:redstone_wire');
-const OBSERVER_DOWN = new Block('minecraft:observer[facing=down]');
-const POWERED_RAIL = new Block('minecraft:powered_rail[shape=east_west]');
-const REDSTONE_BLOCK = new Block('minecraft:redstone_block');
-const REDSTONE_LAMP = new Block('minecraft:redstone_lamp');
-const STICKY_PISTON = new Block('minecraft:sticky_piston[facing=south]');
-const LEVER = new Block('minecraft:lever[face=floor]');
+const AIR = Block.create('minecraft:air');
+const REPEATER = Block.create('minecraft:repeater');
+const WHITE_CONCRETE = Block.create('minecraft:white_concrete');
+const REDSTONE_WIRE = Block.create('minecraft:redstone_wire');
+const OBSERVER_DOWN = Block.create('minecraft:observer[facing=down]');
+const POWERED_RAIL = Block.create('minecraft:powered_rail[shape=east_west]');
+const REDSTONE_BLOCK = Block.create('minecraft:redstone_block');
+const REDSTONE_LAMP = Block.create('minecraft:redstone_lamp');
+const STICKY_PISTON = Block.create('minecraft:sticky_piston[facing=south]');
+const LEVER = Block.create('minecraft:lever[face=floor]');
 
 const INSTRUMENT_BLOCKS = [
-	new Block("minecraft:oak_planks"),
-	new Block("minecraft:white_wool"),
-	new Block("minecraft:dirt"),
-	new Block("minecraft:clay"),
-	new Block("minecraft:gold_block"),
+	Block.create("minecraft:oak_planks"),
+	Block.create("minecraft:white_wool"),
+	Block.create("minecraft:dirt"),
+	Block.create("minecraft:clay"),
+	Block.create("minecraft:gold_block"),
 ];
 
 const createPlatforms = (reg: Region) => {
@@ -152,7 +152,7 @@ const timeToCoord = (time: number) => {
 const createNoteBlock = (reg: Region, width: number, note: Note, instrumentBlock: Block, start: number) => {
 	let vel_pos = width - Math.round((note.velocity * width) / 128);
 	const coord = timeToCoord(note.time) + start + 5;
-	const note_block = new Block(`minecraft:note_block[note=${note.midi - 54}]`);
+	const note_block = Block.create(`minecraft:note_block[note=${note.midi - 54}]`);
 
 	const vel_add = vel_pos > width / 2 ? -1 : 1;
 
@@ -179,7 +179,6 @@ const createNoteBlocks = (reg: Region, width: number, audio: Midi, start = 0) =>
 }
 
 export const generateNBT = (audio: Midi, width = 7, start = 5) => {
-	console.log(audio.duration)
 	const reg = new Region(width * 2 + 1, 8, timeToCoord(audio.duration + 1))
 
 	createLayers(reg, width, start)

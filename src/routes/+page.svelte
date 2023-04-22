@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { generateNBT } from '../utils/getNbt';
-	import { Midi } from '@tonejs/midi';
-	import { splitMidi } from '../utils/getMidi';
-	import * as NBT from 'nbtify';
+	import { onMount } from "svelte";
+	import { generateNBT } from "../utils/getNbt";
+	import { Midi } from "@tonejs/midi";
+	import { splitMidi } from "../utils/getMidi";
+	import * as NBT from "nbtify";
 
 	let files: FileList;
 
-	const download = (data: Uint8Array, filename: string, type: string) => {
-		var file = new Blob([data], { type: type });
+	const download = (data: Uint8Array, filename: string) => {
+		var file = new Blob([data]);
 		// Others
-		var a = document.createElement('a'),
+		var a = document.createElement("a"),
 			url = URL.createObjectURL(file);
 		a.href = url;
 		a.download = filename;
@@ -24,7 +24,7 @@
 
 	const handleSubmit = async () => {
 		if (!files || !files[0]) {
-			console.log('No file was selected');
+			console.log("No file was selected");
 			return;
 		}
 
@@ -32,7 +32,7 @@
 		const midi = splitMidi(new Midi(buffer));
 		const nbtData = generateNBT(midi);
 		const nbtBuffer = await NBT.write(nbtData);
-		download(nbtBuffer, "result.schem", "wow");
+		download(nbtBuffer, "result.schem");
 	};
 
 	onMount(async () => {

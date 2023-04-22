@@ -8,16 +8,24 @@ export class Block {
 	name: string;
 	index: number;
 
-	constructor(name: string) {
+	private constructor(name: string) {
 		this.name = name;
 		this.index = Block.maxTags;
+	}
+
+	static create(name: string) {
+		if (Block.palette[name]) {
+			return Block.blocks[Block.palette[name].valueOf()];
+		}
+
+		const block = new Block(name);
 
 		Block.maxTags += 1;
-		Block.blocks.push(this);
+		Block.blocks.push(block);
 
-		Block.palette[this.name] = new NBT.Int(this.index);
+		Block.palette[this.name] = new NBT.Int(block.index);
 
-		return this;
+		return block;
 	}
 
 	static get(index: number): Block {
