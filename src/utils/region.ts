@@ -41,7 +41,6 @@ export class Region {
 
 	toNBT(): NBT.NBTData {
 		const root: NBT.CompoundTag = {
-			"Metadata": {},
 			"Version": new NBT.Int(2),
 			"DataVersion": new NBT.Int(2975),
 			"Width": this.width,
@@ -52,7 +51,7 @@ export class Region {
 			"Palette": Block.palette,
 		}
 
-		const data = new NBT.NBTData(root)
+		const data = new NBT.NBTData(root, { name: "Schematic" });
 		return data;
 	}
 }

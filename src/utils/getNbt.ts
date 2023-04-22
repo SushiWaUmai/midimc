@@ -179,6 +179,7 @@ const createNoteBlocks = (reg: Region, width: number, audio: Midi, start = 0) =>
 }
 
 export const generateNBT = (audio: Midi, width = 7, start = 5) => {
+	console.log(audio.duration)
 	const reg = new Region(width * 2 + 1, 8, timeToCoord(audio.duration + 1))
 
 	createLayers(reg, width, start)

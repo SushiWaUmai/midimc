@@ -32,7 +32,7 @@
 		const midi = splitMidi(new Midi(buffer));
 		const nbtData = generateNBT(midi);
 		const nbtBuffer = await NBT.write(nbtData);
-		download(nbtBuffer, "result.nbt", "wow");
+		download(nbtBuffer, "result.schem", "wow");
 	};
 
 	onMount(async () => {
