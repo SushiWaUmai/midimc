@@ -19,7 +19,7 @@ jobs:
         env:
           BASE_PATH: /${{ github.event.repository.name }}
         run: |
-          npm run build
+          npm run build --base=${BASE_PATH}
           touch build/.nojekyll
 
       - name: Deploy
