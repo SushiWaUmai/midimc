@@ -13,7 +13,8 @@
 		<div class="text-center space-y-4">
 			<h1 class="text-6xl">MidiMC</h1>
 			<p class="text-2xl">
-				Create beautiful Minecraft melodies from MIDI files effortlessly.
+				Create beautiful Minecraft Noteblock Schematics from MIDI files
+				effortlessly.
 			</p>
 		</div>
 		<a
