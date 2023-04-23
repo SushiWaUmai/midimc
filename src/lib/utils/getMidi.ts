@@ -13,7 +13,7 @@ export const splitMidi = (midi: Midi): Midi => {
 			track.notes.forEach((note) => {
 				if (
 					pitchCutoffList[i] < note.midi &&
-					note.midi < pitchCutoffList[i + 1]
+					note.midi <= pitchCutoffList[i + 1]
 				) {
 					note.midi += add;
 					pitchTrack.addNote(note);
