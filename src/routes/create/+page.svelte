@@ -39,6 +39,10 @@
 	};
 </script>
 
+<svelte:head>
+	<title>MidiMC | Create</title>
+</svelte:head>
+
 <div class="mx-auto container">
 	<div class="my-8">
 		<h1 class="text-4xl">Create Schematic File</h1>

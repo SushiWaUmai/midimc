@@ -2,6 +2,10 @@
 	import LogoGithub from "carbon-icons-svelte/lib/LogoGithub.svelte";
 </script>
 
+<svelte:head>
+	<title>MidiMC | About</title>
+</svelte:head>
+
 <div class="mx-auto container">
 	<div class="my-8">
 		<h1 class="text-4xl">About</h1>
