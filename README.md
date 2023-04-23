@@ -17,3 +17,31 @@ Create beautiful Minecraft Noteblock Schematics from MIDI files effortlessly.
 </p>
 
 Live Demo can be found <a href="https://sushiwaumai.github.io/midimc/">here</a>
+
+## Getting Started
+
+### Prerequisites
+
+- node.js
+- pnpm (optional)
+
+### Run Locally
+
+Clone the repo
+
+```bash
+git clone https://github.com/SushiWaUmai/midimc.git
+cd midimc
+```
+
+Install dependencies and run the development server
+
+```bash
+pnpm install # or npm if you don't have pnpm
+pnpm dev
+```
+
+## Related Projects
+
+- [midi-to-noteblock](https://github.com/SushiWaUmai/midi-to-noteblock)
+- [Minecraft-Noteblock-Schematic-Generator](https://github.com/SushiWaUmai/Minecraft-Noteblock-Schematic-Generator)
