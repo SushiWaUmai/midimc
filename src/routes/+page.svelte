@@ -10,7 +10,7 @@
 		</div>
 		<a
 			class="px-4 py-2 bg-perlwinkle rounded text-2xl shadow-bistre shadow-sm"
-			href="/create">Start Creating Now</a
+			href="create">Start Creating Now</a
 		>
 	</div>
 </div>
