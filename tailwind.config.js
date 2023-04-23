@@ -9,8 +9,8 @@ export default {
 				perlwinkle: "#ADBDFF",
 				cafe: "#4E3B2C",
 				bistre: "#4E3B2C",
-			}
-		}
+			},
+		},
 	},
-	plugins: []
+	plugins: [],
 };

@@ -9,9 +9,12 @@ export const splitMidi = (midi: Midi): Midi => {
 		const add = 54 - pitchCutoffList[i];
 
 		const pitchTrack = new Track([], new Header());
-		midi.tracks.forEach(track => {
-			track.notes.forEach(note => {
-				if (pitchCutoffList[i] < note.midi && note.midi < pitchCutoffList[i + 1]) {
+		midi.tracks.forEach((track) => {
+			track.notes.forEach((note) => {
+				if (
+					pitchCutoffList[i] < note.midi &&
+					note.midi < pitchCutoffList[i + 1]
+				) {
 					note.midi += add;
 					pitchTrack.addNote(note);
 				}
@@ -21,4 +24,4 @@ export const splitMidi = (midi: Midi): Midi => {
 	}
 
 	return result;
-}
+};

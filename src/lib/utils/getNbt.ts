@@ -19,7 +19,7 @@ const INSTRUMENT_BLOCKS = [
 	Block.create("minecraft:white_wool"),
 	Block.create("minecraft:dirt"),
 	Block.create("minecraft:clay"),
-	Block.create("minecraft:gold_block")
+	Block.create("minecraft:gold_block"),
 ];
 
 const createPlatforms = (reg: Region) => {
@@ -150,11 +150,13 @@ const createNoteBlock = (
 	width: number,
 	note: Note,
 	instrumentBlock: Block,
-	start: number
+	start: number,
 ) => {
 	let vel_pos = width - Math.round(note.velocity * width);
 	const coord = timeToCoord(note.time) + start + 5;
-	const note_block = Block.create(`minecraft:note_block[note=${note.midi - 54}]`);
+	const note_block = Block.create(
+		`minecraft:note_block[note=${note.midi - 54}]`,
+	);
 
 	const vel_add = vel_pos > width / 2 ? -1 : 1;
 
@@ -172,7 +174,12 @@ const createNoteBlock = (
 	}
 };
 
-const createNoteBlocks = (reg: Region, width: number, audio: Midi, start = 0) => {
+const createNoteBlocks = (
+	reg: Region,
+	width: number,
+	audio: Midi,
+	start = 0,
+) => {
 	audio.tracks.forEach((track, i) => {
 		track.notes.forEach((note) => {
 			createNoteBlock(reg, width, note, INSTRUMENT_BLOCKS[i], start);

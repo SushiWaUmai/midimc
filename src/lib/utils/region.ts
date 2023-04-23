@@ -15,7 +15,11 @@ export class Region {
 	}
 
 	positionToIndex(x: number, y: number, z: number): number {
-		return x + z * this.width.valueOf() + y * this.width.valueOf() * this.length.valueOf();
+		return (
+			x +
+			z * this.width.valueOf() +
+			y * this.width.valueOf() * this.length.valueOf()
+		);
 	}
 
 	setBlock(x: number, y: number, z: number, block: Block): void {
@@ -47,7 +51,7 @@ export class Region {
 			Length: this.length,
 			BlockData: this.blockData,
 			PaletteMax: new NBT.Int(Block.maxTags),
-			Palette: Block.palette
+			Palette: Block.palette,
 		};
 
 		const data = new NBT.NBTData(root, { name: "Schematic" });
