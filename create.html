@@ -13,7 +13,7 @@
 		<link rel="modulepreload" href="./_app/immutable/entry/_layout.svelte.7a582db1.js">
 		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.984db11e.js">
 		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.da46b06b.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/_page.svelte.71868027.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/create-page.svelte.c23bcd6b.js">
 
 		<!-- Start Single Page Apps for GitHub Pages -->
 		<script type="text/javascript">
@@ -50,9 +50,13 @@
 <div class="absolute inset-0 flex flex-col bg-parchment text-bistre"><header class="p-2 bg-tea shadow-bistre shadow-sm"><div class="flex justify-between container px-2 mx-auto text-xl"><nav class="flex gap-x-4"><a href="/about">About</a></nav>
     <span class="text-2xl"><a href="/">MidiMC</a></span>
     <span><a href="/create">Create</a></span></div></header>
-	<main class="flex-grow"><div class="mx-auto container"><div class="bg-tea border-2 border-bistre shadow-bistre shadow-sm my-8 h-96 grid content-center place-items-center gap-y-4"><div class="text-center space-y-4"><h1 class="text-6xl">MidiMC</h1>
-			<p class="text-2xl">Create beautiful Minecraft melodies from MIDI files effortlessly.</p></div>
-		<a class="px-4 py-2 bg-perlwinkle rounded text-2xl shadow-bistre shadow-sm" href="/create">Start Creating Now</a></div></div></main></div>
+	<main class="flex-grow"><div class="mx-auto container"><div class="my-8"><h1 class="text-4xl">Create Schematic File</h1>
+
+		<br>
+		<div class="grid content-center space-y-8"><label for="file" class="inline-block border-dashed border-2 border-bistre cursor-pointer p-2 text-center bg-tea"><div class="text-4xl">Upload a file</div>
+				<input id="file" type="file" accept=".mid,.midi" hidden></label>
+
+			</div></div></div></main></div>
 
 
 			
@@ -72,7 +76,7 @@
 						import("./_app/immutable/entry/app.f25559b7.js")
 					]).then(([kit, app]) => {
 						kit.start(app, element, {
-							node_ids: [0, 2],
+							node_ids: [0, 4],
 							data,
 							form: null,
 							error: null
