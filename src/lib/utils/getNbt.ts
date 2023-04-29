@@ -190,7 +190,7 @@ const createNoteBlocks = (
 };
 
 export const generateNBT = (audio: Midi) => {
-	const reg = new Region(PLATFORM_WIDTH * 3, 8, timeToCoord(audio.duration + 1));
+	const reg = new Region(PLATFORM_WIDTH * 3, 8, timeToCoord(audio.duration + 1), AIR);
 
 	createPlatforms(reg);
 	createTopLayer(reg);

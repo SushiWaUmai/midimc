@@ -7,11 +7,11 @@ export class Region {
 	length: NBT.Short;
 	blockData: NBT.ByteArrayTag;
 
-	constructor(width: number, height: number, length: number) {
+	constructor(width: number, height: number, length: number, fill: Block) {
 		this.width = new NBT.Short(width);
 		this.height = new NBT.Short(height);
 		this.length = new NBT.Short(length);
-		this.blockData = new Int8Array(width * height * length).fill(0);
+		this.blockData = new Int8Array(width * height * length).fill(fill.index);
 	}
 
 	positionToIndex(x: number, y: number, z: number): number {

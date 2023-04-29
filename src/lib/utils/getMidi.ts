@@ -11,7 +11,7 @@ export const splitMidi = (midi: Midi): Midi => {
 		const pitchTrack = new Track([], midi.header);
 		midi.tracks.forEach((track) => {
 			track.notes.forEach((note) => {
-				if (
+			if (
 					pitchCutoffList[i] < note.midi &&
 					note.midi <= pitchCutoffList[i + 1]
 				) {
