@@ -156,6 +156,7 @@ const createNoteBlock = (
 ) => {
 	let velPos = Math.round((note.midi / 128 + (1 - note.velocity)) / 2 * width);
 	const coord = timeToCoord(note.time) + start + PLATFORM_LEVER_DIST;
+
 	const noteblock = Block.create(
 		`minecraft:note_block[note=${note.midi - 54}]`,
 	);

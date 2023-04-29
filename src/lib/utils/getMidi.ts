@@ -1,4 +1,4 @@
-import { Header, Midi, Track } from "@tonejs/midi";
+import { Midi, Track } from "@tonejs/midi";
 
 const pitchCutoffList = [6, 30, 54, 78, 102, 126];
 
@@ -8,7 +8,7 @@ export const splitMidi = (midi: Midi): Midi => {
 	for (let i = 0; i < pitchCutoffList.length - 1; i++) {
 		const add = 54 - pitchCutoffList[i];
 
-		const pitchTrack = new Track([], new Header());
+		const pitchTrack = new Track([], midi.header);
 		midi.tracks.forEach((track) => {
 			track.notes.forEach((note) => {
 				if (
