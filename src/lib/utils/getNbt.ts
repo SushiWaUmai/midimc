@@ -144,7 +144,7 @@ const createPistonConnection = (reg: Region, offset: number) => {
 
 
 const timeToCoord = (time: number) => {
-	return Math.round(time * 30);
+	return Math.round(time * 20);
 };
 
 const createNoteBlock = (
@@ -154,7 +154,8 @@ const createNoteBlock = (
 	instrumentBlock: Block,
 	start: number,
 ) => {
-	let velPos = Math.round((note.midi / 128 + (1 - note.velocity)) / 2 * width);
+	// let velPos = Math.round((note.midi / 128 + (1 - note.velocity)) / 2 * width);
+	let velPos = Math.round((1 - note.velocity) * width);
 	const coord = timeToCoord(note.time) + start + PLATFORM_LEVER_DIST;
 
 	const noteblock = Block.create(
@@ -169,8 +170,9 @@ const createNoteBlock = (
 			reg.setBlock(width + velPos, 6, coord, instrumentBlock);
 			break;
 		} else if (reg.getBlock(width - velPos, 7, coord) === AIR.index) {
-			reg.setBlock(width - velPos, 7, coord, noteblock);
-			reg.setBlock(width - velPos, 6, coord, instrumentBlock);
+			// I don't know why I have to add + 1 but it works now
+			reg.setBlock(width - velPos, 7, coord + 1, noteblock);
+			reg.setBlock(width - velPos, 6, coord + 1, instrumentBlock);
 			break;
 		}
 		velPos += velAdd;
