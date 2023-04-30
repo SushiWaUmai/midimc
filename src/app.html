@@ -230,7 +230,7 @@ ion: portrait)"
 ion: landscape)"
 		/>
 
-		%sveltekit.head%
+		<link rel="manifest" href="%sveltekit.assets%/manifest.webmanifest" />
 
 		<!-- Start Single Page Apps for GitHub Pages -->
 		<script type="text/javascript">
@@ -262,6 +262,8 @@ ion: landscape)"
 			})(window.location);
 		</script>
 		<!-- End Single Page Apps for GitHub Pages -->
+
+		%sveltekit.head%
 	</head>
 
 	<body data-sveltekit-preload-data="hover">

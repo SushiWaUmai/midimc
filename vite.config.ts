@@ -6,17 +6,21 @@ export default defineConfig({
 	plugins: [
 		sveltekit(),
 		SvelteKitPWA({
-			registerType: "autoUpdate",
-			injectRegister: "auto",
+			srcDir: "./src",
+			scope: "/",
+			base: process.env.BASE_PATH ?? "/",
 			manifest: {
 				name: "MidiMC",
 				short_name: "MidiMC",
 				scope: ".",
 				start_url: process.env.BASE_PATH ?? "/",
+				display: "standalone",
+				theme_color: "#F0EAD2",
+				background_color: "#302721",
 				icons: [
 					{
 						src: "icons/manifest-icon-192.maskable.png",
-						sizes: "192x192",
+						sizes: "192x193",
 						type: "image/png",
 						purpose: "any",
 					},
@@ -39,10 +43,12 @@ export default defineConfig({
 						purpose: "maskable",
 					},
 				],
-				theme_color: "#F0EAD2",
-				background_color: "#302721",
-				display: "fullscreen",
-				orientation: "portrait-primary",
+			},
+			injectManifest: {
+				globPatterns: ["client/**/*.{js,css,ico,png,svg,webp,woff,woff2}"],
+			},
+			workbox: {
+				globPatterns: ["client/**/*.{js,css,ico,png,svg,webp,woff,woff2}"],
 			},
 		}),
 	],
