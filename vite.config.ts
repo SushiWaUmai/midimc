@@ -1,22 +1,26 @@
 import { sveltekit } from "@sveltejs/kit/vite";
-import { defineConfig } from "vite";
+import type { UserConfig } from "vite";
 import { SvelteKitPWA } from "@vite-pwa/sveltekit";
 
-export default defineConfig({
+const basePath = process.env.BASE_PATH ? `${process.env.BASE_PATH}/` : "/";
+
+const config: UserConfig = {
 	plugins: [
 		sveltekit(),
 		SvelteKitPWA({
-			srcDir: "./src",
 			scope: "/",
-			base: process.env.BASE_PATH ?? "/",
+			base: basePath,
+			strategies: "generateSW",
+			registerType: "autoUpdate",
+			injectRegister: "auto",
 			manifest: {
 				name: "MidiMC",
 				short_name: "MidiMC",
-				scope: ".",
-				start_url: process.env.BASE_PATH ?? "/",
+				scope: "/",
+				start_url: basePath,
 				display: "standalone",
-				theme_color: "#F0EAD2",
-				background_color: "#302721",
+				theme_color: "#302721",
+				background_color: "#F0EAD2",
 				icons: [
 					{
 						src: "icons/manifest-icon-192.maskable.png",
@@ -44,12 +48,8 @@ export default defineConfig({
 					},
 				],
 			},
-			injectManifest: {
-				globPatterns: ["client/**/*.{js,css,ico,png,svg,webp,woff,woff2}"],
-			},
-			workbox: {
-				globPatterns: ["client/**/*.{js,css,ico,png,svg,webp,woff,woff2}"],
-			},
 		}),
 	],
-});
+};
+
+export default config;
