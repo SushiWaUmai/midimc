@@ -8,7 +8,7 @@ export default {
 				tea: "#DDE5B6",
 				perlwinkle: "#ADBDFF",
 				cafe: "#4E3B2C",
-				bistre: "#4E3B2C",
+				bistre: "#302721",
 			},
 		},
 	},

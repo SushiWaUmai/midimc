@@ -8,11 +8,13 @@ const REPEATER_NORTH = Block.create("minecraft:repeater[facing=north]");
 const WHITE_CONCRETE = Block.create("minecraft:white_concrete");
 const REDSTONE_WIRE = Block.create("minecraft:redstone_wire");
 const OBSERVER_DOWN = Block.create("minecraft:observer[facing=down]");
-const OBSERVER_UP = Block.create("minecraft:observer[facing=up]")
+const OBSERVER_UP = Block.create("minecraft:observer[facing=up]");
 const POWERED_RAIL = Block.create("minecraft:powered_rail[shape=east_west]");
 const REDSTONE_BLOCK = Block.create("minecraft:redstone_block");
 const REDSTONE_LAMP = Block.create("minecraft:redstone_lamp");
-const STICKY_PISTON_SOUTH = Block.create("minecraft:sticky_piston[facing=south]");
+const STICKY_PISTON_SOUTH = Block.create(
+	"minecraft:sticky_piston[facing=south]",
+);
 const STICKY_PISTON_DOWN = Block.create("minecraft:sticky_piston[facing=down]");
 const LEVER = Block.create("minecraft:lever[face=floor]");
 
@@ -25,7 +27,7 @@ const INSTRUMENT_BLOCKS = [
 ];
 
 const PLATFORM_WIDTH = 15;
-const HALF_PLATFORM_WIDTH = Math.floor(PLATFORM_WIDTH / 2)
+const HALF_PLATFORM_WIDTH = Math.floor(PLATFORM_WIDTH / 2);
 const LEVER_PADDING = 5;
 const PLATFORM_LEVER_DIST = 7;
 
@@ -87,11 +89,31 @@ const createLayers = (reg: Region, width: number, offset: number) => {
 	createNonPistonConnection(reg, offset + HALF_PLATFORM_WIDTH);
 	createPistonConnection(reg, offset + HALF_PLATFORM_WIDTH);
 
-	reg.setBlock(offset + HALF_PLATFORM_WIDTH + 1, 1, PLATFORM_LEVER_DIST, REDSTONE_WIRE);
-	reg.setBlock(offset + HALF_PLATFORM_WIDTH - 0, 1, PLATFORM_LEVER_DIST, REDSTONE_WIRE);
-	reg.setBlock(offset + HALF_PLATFORM_WIDTH - 1, 1, PLATFORM_LEVER_DIST, REDSTONE_WIRE);
+	reg.setBlock(
+		offset + HALF_PLATFORM_WIDTH + 1,
+		1,
+		PLATFORM_LEVER_DIST,
+		REDSTONE_WIRE,
+	);
+	reg.setBlock(
+		offset + HALF_PLATFORM_WIDTH - 0,
+		1,
+		PLATFORM_LEVER_DIST,
+		REDSTONE_WIRE,
+	);
+	reg.setBlock(
+		offset + HALF_PLATFORM_WIDTH - 1,
+		1,
+		PLATFORM_LEVER_DIST,
+		REDSTONE_WIRE,
+	);
 
-	reg.setBlock(offset + HALF_PLATFORM_WIDTH - 0, 1, PLATFORM_LEVER_DIST - 1, REPEATER_NORTH);
+	reg.setBlock(
+		offset + HALF_PLATFORM_WIDTH - 0,
+		1,
+		PLATFORM_LEVER_DIST - 1,
+		REPEATER_NORTH,
+	);
 };
 
 const createStart = (reg: Region, offset: number) => {
@@ -100,13 +122,13 @@ const createStart = (reg: Region, offset: number) => {
 	reg.setBlock(offset, 5, LEVER_PADDING, OBSERVER_UP);
 	reg.setBlock(offset, 4, LEVER_PADDING, REDSTONE_WIRE);
 	reg.setBlock(offset, 3, LEVER_PADDING, STICKY_PISTON_DOWN);
-	reg.setBlock(offset, 2, LEVER_PADDING, REDSTONE_BLOCK)
+	reg.setBlock(offset, 2, LEVER_PADDING, REDSTONE_BLOCK);
 
-	reg.setBlock(offset, 2, LEVER_PADDING, REDSTONE_BLOCK)
+	reg.setBlock(offset, 2, LEVER_PADDING, REDSTONE_BLOCK);
 
 	for (let i = 0; i <= 14; i++) {
-		reg.setBlock(offset - 1 - i, 1, LEVER_PADDING, REDSTONE_WIRE)
-		reg.setBlock(offset + 1 + i, 1, LEVER_PADDING, REDSTONE_WIRE)
+		reg.setBlock(offset - 1 - i, 1, LEVER_PADDING, REDSTONE_WIRE);
+		reg.setBlock(offset + 1 + i, 1, LEVER_PADDING, REDSTONE_WIRE);
 	}
 };
 
@@ -141,7 +163,6 @@ const createPistonConnection = (reg: Region, offset: number) => {
 	reg.setBlock(offset - 1, 2, PLATFORM_LEVER_DIST + 3, REDSTONE_WIRE);
 	reg.setBlock(offset - 1, 1, PLATFORM_LEVER_DIST + 4, REDSTONE_WIRE);
 };
-
 
 const timeToCoord = (time: number) => {
 	return Math.round(time * 20);
@@ -179,11 +200,7 @@ const createNoteBlock = (
 	}
 };
 
-const createNoteBlocks = (
-	reg: Region,
-	width: number,
-	audio: Midi,
-) => {
+const createNoteBlocks = (reg: Region, width: number, audio: Midi) => {
 	audio.tracks.forEach((track, i) => {
 		track.notes.forEach((note) => {
 			createNoteBlock(reg, width, note, INSTRUMENT_BLOCKS[i], LEVER_PADDING);
@@ -192,7 +209,12 @@ const createNoteBlocks = (
 };
 
 export const generateNBT = (audio: Midi) => {
-	const reg = new Region(PLATFORM_WIDTH * 3, 8, timeToCoord(audio.duration + 1), AIR);
+	const reg = new Region(
+		PLATFORM_WIDTH * 3,
+		8,
+		timeToCoord(audio.duration + 1),
+		AIR,
+	);
 
 	createPlatforms(reg);
 	createTopLayer(reg);
